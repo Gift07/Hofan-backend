@@ -33,7 +33,7 @@ class UpdateProfileApiView(APIView):
 
     def patch(self, request, username):
         try:
-            Profile.object.get(user__email=username)
+            Profile.objects.get(user__email=username)
         except Profile.DoesNotExist:
             raise ProfileNotFound
 
@@ -43,8 +43,9 @@ class UpdateProfileApiView(APIView):
             raise NotYourProfile
 
         data = request.data
+        data["status"] = "Pending"
         serializer = UpdateProfileSerializer(
-            instance=request.user.profile, data=data, partial=True
+            instance=request.user.Profile, data=data, partial=True
         )
 
         serializer.is_valid()

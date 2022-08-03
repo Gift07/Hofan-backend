@@ -10,6 +10,7 @@ class GetNectaResults(APIView):
 
     def post(self, request):
         data = request.data
+        print(request)
 
         results = student.student(
             year=data["year"],

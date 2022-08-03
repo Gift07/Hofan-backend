@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "apps.courses",
     "apps.choices",
     "apps.necta",
+    "apps.myapp",
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 SITE_NAME = "Hofan Training Institute"
-DOMAIN = "www.hofantraining.ac.tz"
+DOMAIN = "localhost:3000"
 
 AUTH_USER_MODEL = "users.User"
 

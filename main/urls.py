@@ -10,6 +10,7 @@ urlpatterns = [
     path("api/v1/profile/", include("apps.accounts.urls")),
     path("api/v1/courses/", include("apps.courses.urls")),
     path("api/v1/necta/", include("apps.necta.urls")),
+    path("api/v1/applications/", include("apps.myapp.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "University app"
