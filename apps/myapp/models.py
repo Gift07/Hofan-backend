@@ -12,7 +12,13 @@ class ApplicationState(models.TextChoices):
 
 
 class Results(models.Model):
-    subject = models.CharField(max_length=2, verbose_name=_("Subject"))
+    Mathematics = models.CharField(max_length=2, verbose_name=_("Mathematics"))
+    Biology = models.CharField(max_length=2, verbose_name=_("Biology"))
+    English = models.CharField(max_length=2, verbose_name=_("History"))
+    Kiswahili = models.CharField(max_length=2, verbose_name=_("Kiswahili"))
+    Civics = models.CharField(max_length=2, verbose_name=_("Civics"))
+    History = models.CharField(max_length=2, verbose_name=_("History"))
+    Geography = models.CharField(max_length=2, verbose_name=_("Geography"))
 
     class Meta:
         verbose_name = "Result"
@@ -39,7 +45,7 @@ class MyApplication(models.Model):
         default=ApplicationState.APPLIED,
         verbose_name=_("Application state"),
     )
-    results = models.ManyToManyField(Results)
+    results = models.ForeignKey(Results, on_delete=models.PROTECT)
     education = models.CharField(
         max_length=50,
         choices=EducationLevel.choices,
@@ -58,6 +64,10 @@ class MyApplication(models.Model):
     district_of_residence = models.CharField(
         max_length=255, verbose_name=_("District of Residence")
     )
+    selected_course = models.CharField(
+        max_length=255, verbose_name=_("Selected Course")
+    )
+    disability = models.CharField(max_length=255, verbose_name=_("Disability"))
     created_at = models.DateTimeField(auto_now_add=True)
     appliedObjects = AppliedManager()
     approvedObjects = ApprovedManager()
